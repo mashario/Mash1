@@ -4,11 +4,11 @@ $(function() {
 
   function tick() {
       ++input.value;
-      start();        // restart the timer
+      start(0);        // restart the timer
   };
 
   function start() {  // use a one-off timer
-      timer = setTimeout(tick, 1000);
+      timer = setTimeout(tick, 1500);
   };
 
   function stop() {
@@ -16,7 +16,7 @@ $(function() {
   };
 
   $('#start').bind("click", start); // use .on in jQuery 1.7+
-  $('#stop').bind("click", stop);
+
 
   // if you want it to auto-start
 });
@@ -27,9 +27,9 @@ document.body.appendChild(button);
 
 var deferredPrompt = null;
 
-button.addEventListener('click', function() {
+button.addEventListener('click', function(start) {
   if (deferredPrompt === null) {
-    return false;
+    return true;
   }
   button.style.setProperty('bottom', '-2.5em');
   deferredPrompt.prompt();
